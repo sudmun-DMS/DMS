@@ -17,7 +17,7 @@ public class DMSControllerTest {
     public void success_when_id_1(){
         DMSDocumentService dmsDocumentService = new DMSDocumentService();
 
-        DMSBody expected = new DMSBody(1,"http://file01.txt");
+        DMSBody expected = new DMSBody(1,"http://archive/file01.txt","RELEASE","PMOC","SUV");
 
         DMSDocumentService dms = new DMSDocumentService();
         DMSBody actual = dms.getDocument(1);

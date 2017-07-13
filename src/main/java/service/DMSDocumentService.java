@@ -19,12 +19,12 @@ public class DMSDocumentService {
 
         //call SAP
 
-
-        final String uri = "http://localhost:3000/saps/"+id;
+        final String baseURL = "http://139.59.236.229:1150";
+        final String uri = baseURL+"/saps/"+id;
         RestTemplate restTemplate = new RestTemplate();
         try {
             DMSDocumentDao dao = restTemplate.getForObject(uri, DMSDocumentDao.class);
-            return new DMSBody(dao.getId(),dao.getLink());
+            return new DMSBody(dao.getId(),dao.getLink(),dao.getStatus(),dao.getDescription(),dao.getUser());
         }catch (Exception e){
             throw new DocumentNotFoundException();
         }
