@@ -60,7 +60,7 @@
 			"response": []
 		},
 		{
-			"name": "get document id 3",
+			"name": "get document id 5",
 			"event": [
 				{
 					"listen": "test",
@@ -69,13 +69,13 @@
 						"exec": [
 							"tests[\"Status code should be 200\"] = responseCode.code === 200;",
 							"var data = JSON.parse(responseBody);",
-							"tests[\"Return Header should be 404\"] = data.header.code ===404;"
+							"tests[\"DOC ID NOT FOUND - Return Header should be 404\"] = data.header.code ===404;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://188.166.218.202/document/3",
+				"url": "http://188.166.218.202/document/5",
 				"method": "GET",
 				"header": [],
 				"body": {},
