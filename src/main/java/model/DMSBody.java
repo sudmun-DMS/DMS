@@ -62,6 +62,14 @@ public class DMSBody {
         this.user = user;
     }
 
+    public DMSBody(DMSDocumentDao dao){
+        this.id = dao.getId();
+        this.link = dao.getLink();
+        this.status = dao.getStatus();
+        this.description = dao.getDescription();
+        this.user = dao.getUser();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

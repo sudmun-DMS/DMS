@@ -15,26 +15,28 @@ import service.DocumentNotFoundException;
 @RestController
 public class DMSController {
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/document/{id}")
     public DMSResponse getDocumentById(@PathVariable int id) {
 
         DMSDocumentService dms = new DMSDocumentService();
-        //return new DMSResponse(new DMSHeader(200), new DMSBody(id,"http://google.com"));
+
         try {
 
-            //return new DMSResponse(new DMSHeader(200), dms.getDocument(id));
             DMSBody dmsResultBody =   dms.getDocument(id);
 
             DMSFileService dmsFileService = new DMSFileService();
             dmsResultBody = dmsFileService.getFile(dmsResultBody);
-            return new DMSResponse(new DMSHeader(200), dmsResultBody);
+            return getDmsResponse(dmsResultBody, new DMSHeader(200));
 
         }catch(DocumentNotFoundException de) {
-            return new DMSResponse(new DMSHeader(404), null);
+            return getDmsResponse(null, new DMSHeader(404));
         }catch (Exception e){
-            return new DMSResponse(new DMSHeader(500), null);
+            return getDmsResponse(null, new DMSHeader(500));
         }
+    }
+
+    private DMSResponse getDmsResponse(DMSBody dmsResultBody, DMSHeader header) {
+        return new DMSResponse(header, dmsResultBody);
     }
 
 }
