@@ -41,9 +41,10 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code should be 200\"] = responseCode.code === 200;",
 							"var data = JSON.parse(responseBody);",
-							"tests[\"ID is 2\"] = data.body.id ===2;",
+							"tests[\"ID should be 2\"] = data.body.id ===2;",
+							"tests[\"Filename should contain Test\"] = data.body.link.indexOf(\"Test\") > 0;",
 							""
 						]
 					}
@@ -66,9 +67,9 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code should be 200\"] = responseCode.code === 200;",
 							"var data = JSON.parse(responseBody);",
-							"tests[\"Error when ID is 3\"] = data.header.code ===404;"
+							"tests[\"Return Header should be 404\"] = data.header.code ===404;"
 						]
 					}
 				}
