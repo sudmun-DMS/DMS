@@ -6,10 +6,6 @@ import model.DMSDocumentDao;
 import org.springframework.web.client.RestTemplate;
 
 public class DMSDocumentService {
-    public DMSDocumentService() {
-    }
-
-
 
     public DMSBody getDocument(int id){
 
