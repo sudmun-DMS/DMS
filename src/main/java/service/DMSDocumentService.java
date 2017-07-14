@@ -6,8 +6,6 @@ import model.DMSDocumentDao;
 import org.springframework.web.client.RestTemplate;
 
 public class DMSDocumentService {
-    private DMSDocumentDao dao;
-
     public DMSDocumentService() {
     }
 
@@ -21,8 +19,8 @@ public class DMSDocumentService {
         final String uri = baseURL+"/saps/"+id;
         RestTemplate restTemplate = new RestTemplate();
         try {
-            DMSDocumentDao dao = restTemplate.getForObject(uri, DMSDocumentDao.class);
-            return new DMSBody(dao);
+            DMSDocumentDao data = restTemplate.getForObject(uri, DMSDocumentDao.class);
+            return new DMSBody(data);
 
         }catch (Exception e){
             throw new DocumentNotFoundException();

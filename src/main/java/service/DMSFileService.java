@@ -13,9 +13,6 @@ public class DMSFileService {
 
     private static final SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
-    public DMSFileService() {
-    }
-
     public DMSBody getFile(DMSBody body){
 
         String newLink = generateNewLink(body.getDescription(),body.getLink() );
@@ -46,11 +43,11 @@ public class DMSFileService {
 
     private String generateNewLink (String description, String oldLink){
 
-        int fileTypePosition = oldLink.indexOf(".");
+        int fileTypePosition = oldLink.indexOf('.');
         String extension = oldLink.substring(fileTypePosition);
 
 
-        String urlpath = oldLink.substring(0,oldLink.lastIndexOf("/")+1);
+        String urlpath = oldLink.substring(0,oldLink.lastIndexOf('/')+1);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 

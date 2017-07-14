@@ -15,6 +15,7 @@ import service.DocumentNotFoundException;
 @RestController
 public class DMSController {
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/document/{id}")
     public DMSResponse getDocumentById(@PathVariable int id) {
 
