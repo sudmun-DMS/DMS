@@ -1,0 +1,86 @@
+{
+	"variables": [],
+	"info": {
+		"name": "DMS",
+		"_postman_id": "a08ba7d6-fd07-24b5-2fcd-c2cb87ea7810",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get document id 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code should be 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"ID should be 1\"] = data.body.id ===1;",
+							"tests[\"Filename should contain PMOC\"] = data.body.link.indexOf(\"PMOC\") > 0;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://188.166.218.202/document/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get document id 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"ID is 2\"] = data.body.id ===2;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://188.166.218.202/document/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get document id 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Error when ID is 3\"] = data.header.code ===404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://188.166.218.202/document/3",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
